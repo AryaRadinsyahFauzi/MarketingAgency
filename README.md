@@ -3,6 +3,7 @@
 This portfolio simulates my role as a data analyst at a marketing agency. I receive a variety of assignments from my manager, each a business question I need to answer with data. These assignments cover mapping the client portfolio, analyzing the leads funnel, tracking monthly ad spend trends, evaluating channel and campaign performance through ROAS and cost per lead, and building a client ROI dashboard and lead scoring. I turn each assignment into an output ready to support the team’s decisions. The tools I use are SQL, Google Sheets, and Looker Studio.
 
 Google Spreadsheet: https://docs.google.com/spreadsheets/d/1ecJthfTLWu-CEyPuafT6RgZYOEB4HgHoBCx8byGxXA4/edit?usp=sharing
+
 Looker Studio:
 
 ### 1. Client Map: Which Industry Is the Biggest?

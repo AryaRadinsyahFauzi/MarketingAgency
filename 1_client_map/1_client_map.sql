@@ -10,10 +10,13 @@ ORDER BY sum_monthly_budget_idr DESC;
 
 -- Compare the number of active vs paused vs terminated clients in each industry--
 SELECT
-	contract_status,
-	COUNT (client_id) AS count_by_status
+	Industry,
+	SUM(CASE WHEN contract_status = 'active' THEN 1 END) AS active,
+	SUM(CASE WHEN contract_status = 'paused' THEN 1 END) AS paused,
+	SUM(CASE WHEN contract_status = 'terminated' THEN 1 END) AS terminated
 FROM ma_c_clients
-GROUP BY contract_status;
+GROUP BY industry
+ORDER BY industry;
 
 -- Check the city distribution: are clients concentrated in Jakarta only? --
 SELECT

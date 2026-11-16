@@ -17,7 +17,7 @@ Looker Studio: https://datastudio.google.com/reporting/44843036-f5b4-42dc-bf0f-b
 
 **Output:** A concise client portfolio summary ready to use in a team onboarding slide.
 
-**Tools:** SQL
+**Tools:** SQL.
 
 
 ### 2. Leads Funnel: Where Do Prospects Get Stuck?
@@ -32,7 +32,7 @@ Looker Studio: https://datastudio.google.com/reporting/44843036-f5b4-42dc-bf0f-b
 
 **Output:** A simple funnel chart with a one-sentence insight. The biggest leak is between the qualified and converted stages, where more than half of qualified leads have not yet converted.
 
-**Tools:** Google Sheet (Pivot Table + Line Chart)
+**Tools:** Google Sheet (Pivot Table + Line Chart).
 
 
 ### 3. Monthly Advertising Spend Trends: When Does the Agency Spend the Most?

@@ -50,3 +50,18 @@ Looker Studio: https://datastudio.google.com/reporting/44843036-f5b4-42dc-bf0f-b
 **Note:** Approximately 10% of records in the `adspend_cleaned` table have missing `conversions` values, meaning the actual number of conversions may be slightly higher than the recorded figures.
 
 **Tools:** Google Sheets (Pivot Table + Line Chart).
+
+
+### **4. Channel Performance: Which Channel Delivers the Best Results?**
+
+**Business question:** The Head of Performance wants to identify which advertising channels are the most efficient in terms of cost per click (CPC) and cost per acquisition (CPA). The goal is to compare the performance of each channel and identify which ones generate conversions at the lowest cost.
+
+**Approach:** Using SQL on the `campaigns_cleaned` and `adspend_cleaned` tables, I:
+
+  1. Joined the `campaigns` and `ad_spend` tables to connect advertising channel information with spending, clicks, and conversions data.
+  2. Aggregated total spending, clicks, and conversions for each channel to calculate CPC and CPA.
+  3. Ranked advertising channels by CPA, from the lowest to the highest, to identify the most cost-efficient channels in terms of cost per conversion and support campaign evaluation and budget allocation decisions.
+
+**Output:** A channel performance scorecard displaying CPC and CPA for each channel, including rankings based on CPA as a basis for evaluating cost efficiency.
+
+**Tools:** SQL.

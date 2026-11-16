@@ -4,7 +4,7 @@ This portfolio simulates my role as a data analyst at a marketing agency. I rece
 
 Google Spreadsheet: https://docs.google.com/spreadsheets/d/1ecJthfTLWu-CEyPuafT6RgZYOEB4HgHoBCx8byGxXA4/edit?usp=sharing
 
-Looker Studio:
+Looker Studio: https://datastudio.google.com/reporting/44843036-f5b4-42dc-bf0f-bcc727c70d3f
 
 ### 1. Client Map: Which Industry Is the Biggest?
 **Business question:** The Account Director asked me to put together a quick overview of the agency’s client portfolio. Out of 50 clients, they want to know which industries contribute the most to monthly budget, how many contracts are still running in each industry, and whether clients are concentrated in just one city.

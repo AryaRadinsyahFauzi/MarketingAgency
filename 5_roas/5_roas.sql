@@ -13,7 +13,7 @@ SELECT
 	cam.actual_spend_idr,
 	COALESCE(con.total_revenue_idr, 0) AS total_revenue_idr,  -- campaigns without conversions get revenue 0
 	-- ROAS = total revenue / actual spend, rounded to 4 decimals (small values stay visible)
-	ROUND(COALESCE(con.total_revenue_idr, 0)/COALESCE(cam.actual_spend_idr,0),4) AS roas
+	ROUND(COALESCE(con.total_revenue_idr, 0)/NULLIF(cam.actual_spend_idr,0),4) AS roas
 FROM ma_c_campaigns AS cam
 LEFT JOIN conv AS con ON con.campaign_id = cam.campaign_id  -- LEFT JOIN keeps all 500 campaigns
 ORDER BY roas DESC;  -- highest ROAS first

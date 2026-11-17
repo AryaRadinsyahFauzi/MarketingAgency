@@ -65,3 +65,19 @@ Looker Studio: https://datastudio.google.com/reporting/44843036-f5b4-42dc-bf0f-b
 **Output:** A channel performance scorecard displaying CPC and CPA for each channel, including rankings based on CPA as a basis for evaluating cost efficiency.
 
 **Tools:** SQL.
+
+
+### **5. Campaign ROAS: Which Campaigns Pay Back the Investment?**
+
+**Business question:** Clients often ask, “Is my advertising worth it?” Return on Ad Spend (ROAS), calculated as revenue divided by spend, answers that question. The goal is to evaluate 500 campaigns and identify which ones generate profitable returns and which ones are simply burning budget.
+
+**Approach:** Using SQL on the campaigns and conversions tables, followed by Google Sheets for the final classification, I:
+
+  1. Aggregated total revenue per campaign from the conversions table using a CTE, so that each campaign has only one row and no duplicated rows appear after the join.
+  2. Joined the aggregated revenue to the campaigns table using a LEFT JOIN, so that all 500 campaigns were kept. Campaigns without conversions were assigned a revenue of zero using COALESCE, resulting in a ROAS of zero instead of being dropped from the data.
+  3. Calculated ROAS for each campaign by dividing total revenue by actual_spend_idr, using NULLIF to prevent division-by-zero errors, then ranked campaigns from the highest to the lowest ROAS.
+  4. Exported the SQL results to Google Sheets and created a flag column using an IF formula: campaigns with ROAS of 2 or higher were flagged as “Scale”, those between 1 and 2 as “Maintain”, and those below 1 as “Pause”.
+
+**Output:** A campaign performance table displaying total revenue, spend, and ROAS for each campaign, along with a “Scale”, “Maintain”, or “Pause” flag, ready to be presented directly in a client meeting.
+
+**Tools:** SQL, Google Sheets.

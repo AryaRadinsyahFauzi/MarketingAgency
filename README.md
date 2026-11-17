@@ -52,7 +52,7 @@ Looker Studio: https://datastudio.google.com/reporting/44843036-f5b4-42dc-bf0f-b
 **Tools:** Google Sheets (Pivot Table + Line Chart).
 
 
-### **4. Channel Performance: Which Channel Delivers the Best Results?**
+### 4. Channel Performance: Which Channel Delivers the Best Results?
 
 **Business question:** The Head of Performance wants to identify which advertising channels are the most efficient in terms of cost per click (CPC) and cost per acquisition (CPA). The goal is to compare the performance of each channel and identify which ones generate conversions at the lowest cost.
 
@@ -67,7 +67,7 @@ Looker Studio: https://datastudio.google.com/reporting/44843036-f5b4-42dc-bf0f-b
 **Tools:** SQL.
 
 
-### **5. Campaign ROAS: Which Campaigns Pay Back the Investment?**
+### 5. Campaign ROAS: Which Campaigns Pay Back the Investment?
 
 **Business question:** Clients often ask, “Is my advertising worth it?” Return on Ad Spend (ROAS), calculated as revenue divided by spend, answers that question. The goal is to evaluate 500 campaigns and identify which ones generate profitable returns and which ones are simply burning budget.
 
@@ -81,3 +81,20 @@ Looker Studio: https://datastudio.google.com/reporting/44843036-f5b4-42dc-bf0f-b
 **Output:** A campaign performance table displaying total revenue, spend, and ROAS for each campaign, along with a “Scale”, “Maintain”, or “Pause” flag, ready to be presented directly in a client meeting.
 
 **Tools:** SQL, Google Sheets.
+
+
+### 6. Cost per Lead: Which Channel Is the Most Cost-Efficient?
+
+**Business question:** Campaigns with the `lead_gen` and `conversions` objectives both generate leads, and the goal is to collect leads as cheaply as possible. Cost per Lead (CPL), calculated as ad spend divided by the number of leads, shows which channels are the most cost-efficient. However, a low cost alone is not enough if the leads themselves are low quality. The goal is to identify which channels deliver leads at a low cost without sacrificing lead quality.
+
+**Approach:** Using SQL on the `campaigns` and `leads` tables, followed by Google Sheets and Looker Studio for the matrix visualizations, I:
+
+  1. Filtered campaigns to include only those with the `lead_gen` and `conversions` objectives, since both types of campaigns contribute to lead generation.
+  2. Aggregated the number of leads and total `lead_score` per campaign from the `leads` table using a CTE, so that each campaign has only one row and no duplicated rows appear after the join.
+  3. Joined the aggregated results to the `campaigns` table using a LEFT JOIN, so that campaigns without leads were still included. Then calculated total spend and number of leads per channel, along with CPL (total spend divided by total leads), using NULLIF to prevent division-by-zero errors.
+  4. Calculated the average `lead_score` per channel (total score divided by total leads) so that channels with a low CPL but poor lead quality could be identified, then ranked channels from the lowest to the highest CPL.
+  5. Built two matrices in Google Sheets and Looker Studio: Lead Volume vs. Lead Quality, and Cost per Lead vs. Lead Quality.
+
+**Output:** A Channel Performance Summary table showing Spend, Leads, CPL, and Lead Score for each channel, along with two simple 2x2 matrices (Lead Volume vs. Lead Quality and Cost per Lead vs. Lead Quality), available in both Google Sheets and Looker Studio versions, serving as an ad-hoc answer for the performance team.
+
+**Tools:** SQL, Google Sheets, Looker Studio.

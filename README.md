@@ -98,3 +98,25 @@ Looker Studio: https://datastudio.google.com/reporting/44843036-f5b4-42dc-bf0f-b
 **Output:** A Channel Performance Summary table showing Spend, Leads, CPL, and Lead Score for each channel, along with two simple 2x2 matrices (Lead Volume vs. Lead Quality and Cost per Lead vs. Lead Quality), available in both Google Sheets and Looker Studio versions, serving as an ad-hoc answer for the performance team.
 
 **Tools:** SQL, Google Sheets, Looker Studio.
+
+
+### 7. UTM Audit: How Blind Is Our Attribution?
+
+**Business question:** RevOps suspects that half of the attribution report may be misleading because many leads have an unknown origin. This is confirmed: about 20% of leads have an empty acquisition_channel because UTM parameters were not tracked. The goal is to measure how many leads are missing an acquisition channel.
+
+**Approach:** Using SQL on the leads table, followed by Google Sheets for the pivot tables and scorecard, I:
+
+  1. Cleaned the acquisition channel field using a CTE, replacing missing values with “Unknown” using COALESCE, so that untracked leads were kept in the data and clearly labeled instead of being silently dropped.
+  2. Created a known_status flag using a CASE statement, labeling each lead as “is_known” or “is_unknown” depending on whether its acquisition channel was recorded.
+  3. Imported the SQL results into Google Sheets and built a Leads by Tracking Status table to compare the share of leads with and without an acquisition_channel.
+  4. Built a Leads by Acquisition Channel table to show how lead volume is distributed across channels, including the “Unknown” group.
+  5. Built a Monthly Tracking Status of Leads table to track the share of known leads month by month and spot weak periods.
+Created a scorecard summarizing the “% known” metric.
+
+**Output:** A “% known” scorecard and a Leads by Acquisition Channel table that transparently includes the “Unknown” group, ready to be monitored every month, supported by a Leads by Tracking Status table and a Monthly Tracking Status of Leads table.
+
+**Tools:** SQL, Google Sheets.
+
+**Finding:** 20.4% of leads (510 of 2,500) have no acquisition channel, so attribution reports cover only 79.6% of lead volume. Monthly tracking quality is volatile (66%-91% known) and has slipped slightly: 80.6% known in 2022, 80.1% in 2023, and 77.8% in 2024.
+
+**Recommendation:** Enforce UTM parameters at lead capture, investigate the weak months (especially January of each year) for campaign or tracking changes, break down “Unknown” by campaign to find where tracking leaks, and monitor % known monthly.

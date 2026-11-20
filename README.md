@@ -19,6 +19,8 @@ Looker Studio: https://datastudio.google.com/reporting/44843036-f5b4-42dc-bf0f-b
 
 **Tools:** SQL.
 
+**Result:** Of the 50 marketing agency clients, the largest monthly budget contribution comes from the Fashion E-commerce industry with a total of IDR 538 million, followed by FMCG (IDR 487 million) and Property (IDR 421 million), while Education (IDR 118 million) and Healthcare (IDR 154 million) contribute the least. However, a large total does not necessarily reflect value per client: the “Other” industry actually has the highest average budget (IDR 75.7 million per client) even though its total is only IDR 227 million, while Fashion E-commerce (IDR 67.3 million) and Fintech (IDR 62 million) also have strong averages. In terms of contract status, most clients are still active, with Fashion E-commerce (7 active) and Fintech (6 active, with no paused or terminated clients) being the most stable segments, whereas FMCG needs attention because it has 2 paused and 2 terminated clients out of 8 in total. F&B and Healthcare also each record terminated clients (2 and 1, respectively). By city distribution, clients are heavily concentrated in Jakarta with 33 of 50 clients (66%), followed by Surabaya (7) and Bandung (5), while Semarang, Makassar, and Medan together contribute only 5 clients. This means the agency’s portfolio relies heavily on the Jakarta market, which suggests room for expansion into other cities, as well as a need for a dedicated retention strategy for industries with relatively high paused/terminated rates, such as FMCG.
+
 
 ### 2. Leads Funnel: Where Do Prospects Get Stuck?
 
